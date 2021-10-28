@@ -1,0 +1,21 @@
+name: Deploy to Beta
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-beta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Deploy FTP
+        uses: sebastianpopp/git-ftp-action@releases/v3
+        with:
+          url: ${{ secrets.FTP_PATH }}
+          user: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
