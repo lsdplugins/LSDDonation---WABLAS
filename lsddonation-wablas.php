@@ -1,10 +1,10 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       LSDDonasi - WABLAS
+ * Plugin Name:       LSDDonasi - Wablas
  * Plugin URI:        https://lsdplugins.com/
  * Description:       Notifikasi Whatsapp WABLAS untuk LSDDonasi
- * Version:           1.0.5
+ * Version:           1.0.6
  * Author:            LSD Plugins
  * Author URI:        https://lsdplugins.com/
  * License:           GPL-3.0+
@@ -25,8 +25,8 @@ if (!defined('ABSPATH')) {
 add_action('admin_init', 'lsdd_wablas_dependency');
 
 // Define Constant
-defined('LSDD_WABLAS_VERSION') or define('LSDD_WABLAS_VERSION', '1.0.5');
-defined('LSDD_WABLAS_REQUIRED') or define('LSDD_WABLAS_REQUIRED', '4.0.5');
+defined('LSDD_WABLAS_VERSION') or define('LSDD_WABLAS_VERSION', '1.0.6');
+defined('LSDD_WABLAS_REQUIRED') or define('LSDD_WABLAS_REQUIRED', '4.1.0');
 defined('LSDD_WABLAS_BASE') or define('LSDD_WABLAS_BASE', plugin_basename(__FILE__));
 defined('LSDD_WABLAS_PATH') or define('LSDD_WABLAS_PATH', plugin_dir_path(__FILE__));
 defined('LSDD_WABLAS_URL') or define('LSDD_WABLAS_URL', plugin_dir_url(__FILE__));
@@ -52,7 +52,7 @@ function lsdd_wablas_dependency()
     }
 
     // Checking Core Version
-    $core_plugin = get_plugin_data(LSDD_PATH . 'lsddonation.php');
+    $core_plugin = get_plugin_data( WP_PLUGIN_DIR . '/lsddonation/lsddonation.php');
     if (!version_compare($core_plugin['Version'], LSDD_WABLAS_REQUIRED, '>=')) {
         add_action('admin_notices', 'lsdd_wablas_fail_version');
         $core_version = false;

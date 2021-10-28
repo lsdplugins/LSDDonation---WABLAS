@@ -244,6 +244,7 @@ Salam Hangat
                 'Authorization' => $this->apikey,
                 'Content-Type' => 'application/json',
             ),
+            'sslverify' => false,
             'httpversion' => '1.0',
             'body' => json_encode($body),
             'cookies' => array(),
@@ -299,7 +300,7 @@ Salam Hangat
         $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
         $phone = esc_attr($_REQUEST['phone']);
 
-        $args = array('event' => 'test', 'receiver' => $phone, 'message' => '*LSDDonation* :: Whatsapp Notification Test using Wablas' );
+        $args = array('event' => 'test', 'receiver' => $phone, 'message' => '**LSDDonasi* :: Test Notifikasi Whatsapp via Wablas' );
 
         if ($this->send( $args )) {
             echo 200;
